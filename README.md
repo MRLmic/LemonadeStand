@@ -29,10 +29,10 @@ Acceptance criteria:
 6. Store codebases in a public git repository 
 
 
-## Take-aways and next steps
-- The following is a representation of how I would like to restructure my tables:
+## ERD
+- The following is a representation of how I have structured my tables:
 ![ERD](<Lemonade ERD.png>)
 
 
-### Other next steps:
+### Next Steps:
 - implement responsive UI design (original specs did not require)
