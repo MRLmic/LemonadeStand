@@ -1,8 +1,9 @@
 import React, { useContext } from 'react';
-import Lemon from '~images/lemon.png';
-import Trash from '~images/trash-icon.svg';
+import Lemon from '../../assets/img/lemon.png';
+import Trash from '../../assets/img/trash-icon.svg';
+//ToDo create aliases for assets
 import QuantityComponent from './QuantityComponent.jsx';
-import { TotalContext, TotalContextType } from '../Wrapper.js';
+import { TotalContext, TotalContextType } from './../Wrapper.jsx';
 import { formatter } from '../../utils.js'
 
 const ListRow = ({price, flavor, size, itemName}) => {
