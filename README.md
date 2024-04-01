@@ -31,11 +31,8 @@ Acceptance criteria:
 
 ## Take-aways and next steps
 - The following is a representation of how I would like to restructure my tables:
-![Diagram](LemonadeBE/ClientApp/src/img/ERD.png)
+![ERD](<Lemonade ERD.png>)
 
 
 ### Other next steps:
-- remove generated files
 - implement responsive UI design (original specs did not require)
-
-
