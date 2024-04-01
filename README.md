@@ -8,9 +8,9 @@ This project was completed as part of an interview process. I wanted to utilize 
 In addition to the below specifications, it was also requested that I reproduce a provided UI mock-up. 
 
 _mock-up_
-![image](https://github.com/MRLmic/lemonade-stand/assets/30061432/42c46d96-935e-429c-835c-03d792bdc6b6)
-_final result without data populated_
-![image](https://github.com/MRLmic/lemonade-stand/assets/30061432/6cc2b797-90bb-4e80-a6ec-2f38761c1568)
+![Provided Mockup](mockup.png)
+_final result with data populated_
+<!-- TODO Add image of app with data populated -->
 
 ## Specs
 Acceptance criteria: 
