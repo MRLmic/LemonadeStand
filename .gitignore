@@ -1,6 +1,8 @@
 node_modules/
 .DS_Store
 .env.development.local
-LemonadeStand.BackEnd/LemonadeStand.Config/appsettings.Development.json
 obj/
 bin/
+LemonadeStand.Config/
+LemonadeStand.BackEnd/LemonadeStand.Config/
+LemonadeStand.BackEnd/LemonadeStand.Config/appsettings.json
