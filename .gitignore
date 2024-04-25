@@ -3,6 +3,5 @@ node_modules/
 .env.development.local
 obj/
 bin/
-LemonadeStand.Config/
-LemonadeStand.BackEnd/LemonadeStand.Config/
-LemonadeStand.BackEnd/LemonadeStand.Config/appsettings.json
+LemonadeStand.Config/appsettings.Development.json
+
