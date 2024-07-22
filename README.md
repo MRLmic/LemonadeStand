@@ -2,7 +2,7 @@
 
 This project was completed as part of an interview process. I wanted to utilize up-to-date React hooks and .NET Core. 
 
-*Formally hosted on Azure, this project has been taken down. 
+*Formerly hosted on Azure, this project has been taken down. 
 
 ## UI Requirements 
 In addition to the below specifications, it was also requested that I reproduce a provided UI mock-up. 
