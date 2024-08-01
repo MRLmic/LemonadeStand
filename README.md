@@ -11,10 +11,10 @@ This project was completed as part of an interview process.
 * Formerly hosted on Azure, this project has been taken down. 
 
 ## User Stories
-As a user, I can add varying quantities of products to my cart.
-As a user, I can clear my entire order with a single action.
-As a user, I can see the total cost of my cart updated instantly as I add or adjust items.
-As a user, I can submit my order, enter my customer data, and receive a confirmation number.
+* As a user, I can add varying quantities of products to my cart.
+* As a user, I can clear my entire order with a single action.
+* As a user, I can see the total cost of my cart updated instantly as I add or adjust items.
+* As a user, I can submit my order, enter my customer data, and receive a confirmation number.
 
 ## UI Requirements 
 In addition to the below specifications, it was also requested that I reproduce a provided UI mock-up. 
