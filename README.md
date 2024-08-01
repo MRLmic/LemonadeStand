@@ -42,7 +42,6 @@ Acceptance criteria provided:
 
 
 ## ERD
-- The following is a representation of how I have structured my tables:
 ![ERD](<Lemonade ERD.png>)
 
 
