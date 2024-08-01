@@ -1,7 +1,19 @@
+using LemonadeStand.Models;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+var config = new ConfigurationBuilder()
+    .SetBasePath(Directory.GetCurrentDirectory())
+    .AddJsonFile("LemonadeStand.Config/appsettings.json", optional: false, reloadOnChange: true)
+    .AddEnvironmentVariables()
+    .Build();
+
+builder.Services.AddDbContext<LemonadeContext>(options =>
+    options.UseNpgsql(config.GetConnectionString("lemonade")));
 
 var app = builder.Build();
 
@@ -13,8 +25,8 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-app.UseHttpsRedirection();
 app.UseStaticFiles();
+app.UseHttpsRedirection();
 
 app.UseRouting();
 
