@@ -6,14 +6,14 @@ public class Product
     public int ProductId { get; set; }
 
     [Required]
-    public string Flavor { get; set; }
+    public string Flavor { get; set; } = "";
 
     [Required]
-    public string Size { get; set; }
+    public string Size { get; set; } = "";
 
     [Required]
     public decimal Price { get; set; }
 
-    public virtual ICollection<OrderItem> OrderItems { get; set; }
+    public virtual ICollection<OrderItem> OrderItems { get; set; } = new List<OrderItem>();
 
 }
