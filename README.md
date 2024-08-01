@@ -1,6 +1,6 @@
 # Lemonade Stand
 
-This project was completed as part of an interview process. I wanted to utilize up-to-date React hooks and .NET Core. 
+This project was completed as part of an interview process.
 
 ## Technologies
 * React.js: v18.2.0
@@ -8,7 +8,13 @@ This project was completed as part of an interview process. I wanted to utilize 
 * Entity Framework Core (EF Core): v7.0
 * PostgreSQL
 
-*Formerly hosted on Azure, this project has been taken down. 
+* Formerly hosted on Azure, this project has been taken down. 
+
+## User Stories
+As a user, I can add varying quantities of products to my cart.
+As a user, I can clear my entire order with a single action.
+As a user, I can see the total cost of my cart updated instantly as I add or adjust items.
+As a user, I can submit my order, enter my customer data, and receive a confirmation number.
 
 ## UI Requirements 
 In addition to the below specifications, it was also requested that I reproduce a provided UI mock-up. 
@@ -19,7 +25,7 @@ _final result with data populated_
 <!-- TODO Add image of app with data populated -->
 
 ## Specs
-Acceptance criteria: 
+Acceptance criteria provided: 
 1. Allow you to modify lemonade types and sizes in the datastore and automatically update types and sizes displayed to the customer 
 2. Allow customers to initially buy 2 types of lemonade:
   a. Regular lemonade 
