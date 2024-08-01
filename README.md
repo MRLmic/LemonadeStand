@@ -2,6 +2,12 @@
 
 This project was completed as part of an interview process. I wanted to utilize up-to-date React hooks and .NET Core. 
 
+## Technologies
+* React.js: v18.2.0
+* .NET: 7.0
+* Entity Framework Core (EF Core): v7.0
+* PostgreSQL
+
 *Formerly hosted on Azure, this project has been taken down. 
 
 ## UI Requirements 
