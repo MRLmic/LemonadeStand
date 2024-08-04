@@ -20,20 +20,5 @@ namespace LemonadeStand.Controllers
                         View(await _context.Products.ToListAsync()) :
                         Problem("Entity set 'LemonadeContext.Products'  is null.");
         }
-
-        // GET: Products/PrintToConsole
-        public async Task<IActionResult> PrintToConsole()
-        {
-            if (_context.Products != null)
-            {
-                var products = await _context.Products.ToListAsync();
-                foreach (var product in products)
-                {
-                    Console.WriteLine($"Product ID: {product.ProductId}, Name: {product.Flavor}, Price: {product.Price}, Size: {product.Size}");
-                }
-                return Ok("Products printed to console.");
-            }
-            return Problem("Entity set 'LemonadeContext.Products' is null.");
-        }
     }
 }
