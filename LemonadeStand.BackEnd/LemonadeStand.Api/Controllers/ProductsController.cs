@@ -4,7 +4,7 @@ using LemonadeStand.Models;
 
 namespace LemonadeStand.Controllers
 {
-    public class ProductsController : Controller
+    public class ProductsController : ControllerBase
     {
         private readonly LemonadeContext _context;
 
@@ -14,11 +14,10 @@ namespace LemonadeStand.Controllers
         }
 
         // GET: Products
-        public async Task<IActionResult> Index()
+       [HttpGet]
+        public async Task<ActionResult<IEnumerable<Product>>> GetProducts()
         {
-            return _context.Products != null ?
-                        View(await _context.Products.ToListAsync()) :
-                        Problem("Entity set 'LemonadeContext.Products'  is null.");
+            return await _context.Products.ToListAsync();
         }
     }
 }
