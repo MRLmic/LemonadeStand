@@ -1,5 +1,5 @@
 import React from 'react';
-import ListContainer from './components/ItemDisplay/ListContainer.jsx'
+import Wrapper from './components/Wrapper';
 import Logo from './assets/img/Logo.svg';
 
 export default function App() {
@@ -8,7 +8,7 @@ export default function App() {
       <header>
         <img src={Logo} className="App-logo" alt="logo" />
       </header>
-      <ListContainer></ListContainer>
+      <Wrapper></Wrapper>
     </div>
   );
 };
