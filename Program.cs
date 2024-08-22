@@ -15,6 +15,19 @@ var config = new ConfigurationBuilder()
 builder.Services.AddDbContext<LemonadeContext>(options =>
     options.UseNpgsql(config.GetConnectionString("lemonade")));
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowSpecificOrigins",
+        builder =>
+        {
+            var frontendurl = config["Frontend:Url"];
+            Console.WriteLine(frontendurl);
+            builder.WithOrigins(frontendurl)
+                .AllowAnyMethod()
+                .AllowAnyHeader();
+        });
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -23,12 +36,16 @@ if (!app.Environment.IsDevelopment())
     app.UseExceptionHandler("/Home/Error");
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
-}
-
+} 
 app.UseStaticFiles();
 app.UseHttpsRedirection();
 
 app.UseRouting();
+
+if (app.Environment.IsDevelopment())
+{
+    app.UseCors("AllowSpecificOrigins");
+}
 
 app.UseAuthorization();
 

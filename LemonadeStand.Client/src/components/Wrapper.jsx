@@ -1,48 +1,33 @@
-import React, { createContext, useReducer, useEffect } from 'react';
-import ListContainer from './ItemDisplay/ListContainer.jsx'
-import TotalBox from './OrderDisplay/TotalBox.jsx'
-
-export const TotalContext = createContext<TotalContextType>({ state: initialState, dispatch: () => {}});
+import React, { useState, useEffect } from 'react';
+import ListContainer from './ItemDisplay/ListContainer';
 
 const Wrapper = () => {
+    const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        //TODO - add hosting URL for data fetch
-        const url = "";
+        console.log('API URL:', process.env.REACT_APP_API_URL);
+        const fetchData = async () => {
+            try {
+                const response = await fetch(process.env.REACT_APP_API_URL, {
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+                const data = await response.json();
+                setProducts(data);
+            } catch (error) {
+                console.log("error", error);
+            }
+        };
 
-    const initialState = {
-        orderName: '',
-        orderEmail: '',
-        orderPhone: '',
-        total: 0,
-        order: { 'LEMREG': 0, 'LEMLARGE': 0, 'PINKLARGE': 0, 'PINKREG': 0 },
-        types: []
-    };
+        fetchData();
+    }, []);
 
-    const fetchData = async () => {
-        try {
-            const response = await fetch(url, {
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            });
-            const json = await response.json();
-            console.log(json);
-            dispatch({type: OrderActionKind.UPDATE, types: json});
-        } catch (error) {
-            console.log("error", error);
-        }
-    };
-    fetchData();
-}, []);
-
-return (<TotalContext.Provider value={{ state, dispatch }}>
-    <div>
-        <ListContainer orderTypes={state.types}></ListContainer>
-        <TotalBox></TotalBox>
-    </div>
-</TotalContext.Provider>
-);
+    return (
+        <div>
+            <ListContainer products={products}></ListContainer>
+        </div>
+    );
 };
 
 export default Wrapper;
