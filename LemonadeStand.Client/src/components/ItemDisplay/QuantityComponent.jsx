@@ -1,15 +1,19 @@
 import React, { useContext } from 'react'
-import { TotalContext, TotalContextType, OrderActionKind } from '../Wrapper.jsx'
+import { OrderContext } from '../Wrapper.jsx'
 
-const QuantityComponent = ({ itemName, price }) => {
-    const { state, dispatch } = useContext<TotalContextType>(TotalContext);
-    let quantity = state.order[itemName];
+const QuantityComponent = ({ productId }) => {
+    const { state, dispatch } = useContext(OrderContext);
+    const quantity = state[productId] || 0;
+
+    const increment = () => dispatch({ type: 'INCREMENT', productId });
+    const decrement = () => dispatch({ type: 'DECREMENT', productId });
+
     return (
-        <div>
-            <button onClick={() => dispatch({ type: OrderActionKind.MINUS, itemName: itemName, price: price })}>-</button>
-            <span className='quantity-text'>{quantity}</span>
-            <button onClick={() => dispatch({ type: OrderActionKind.PLUS, itemName: itemName, price: price })}>+</button>
-        </div>
+            <div>
+                <button onClick={decrement}>-</button>
+                <span className='quantity-text'>{quantity}</span>
+                <button onClick={increment}>+</button>
+            </div>
     )
 }
 

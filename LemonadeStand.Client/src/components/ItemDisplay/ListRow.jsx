@@ -3,12 +3,11 @@ import Lemon from '../../assets/img/lemon.png';
 import Trash from '../../assets/img/trash-icon.svg';
 //ToDo create aliases for assets
 import QuantityComponent from './QuantityComponent.jsx';
-import { TotalContext, TotalContextType } from './../Wrapper.jsx';
+import { OrderContext } from './../Wrapper.jsx';
 import { formatter } from '../../utils.js'
 
-const ListRow = ({price, flavor, size, itemName}) => {
-    const { state, dispatch } = useContext<TotalContextType>(TotalContext);
-    let quantity = state.order[itemName] * price;
+const ListRow = ({price, flavor, size, productId }) => {
+    const { dispatch } = useContext(OrderContext);
 
     return (<tr className='List-row'>
         <td className='lemon-cell'>
@@ -29,13 +28,13 @@ const ListRow = ({price, flavor, size, itemName}) => {
             {price}{price === 1 ? '.00' : '0'}
         </td>
         <td className='quantity-text'>
-            <QuantityComponent price={price} itemName={itemName}></QuantityComponent>
+            <QuantityComponent price={price} productId={productId}></QuantityComponent>
         </td>
         <td className='total-text'>
-            {formatter.format(quantity)}
+            {formatter.format(price)}
         </td>
         <td className='trash'>
-            <button onClick={() => dispatch({ type: OrderActionKind.CLEAR, itemName: itemName, price: price })} className='trash-button'>
+            <button onClick={() => dispatch({ type: 'RESET', productId })} className='trash-button'>
                 <img src={Trash} alt='trash'></img>
             </button>
         </td>
