@@ -1,6 +1,7 @@
 import React from 'react';
 import Wrapper from './components/Wrapper';
 import Logo from './assets/img/Logo.svg';
+import './App.css';
 
 export default function App() {
   return (

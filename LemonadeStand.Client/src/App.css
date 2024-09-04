@@ -1,0 +1,150 @@
+.App {
+    text-align: center;
+    background-color: #F5F5F5;
+    font-family: 'Alice';
+  }
+  
+  .App-logo {
+    position: absolute;
+    width: 799px;
+    height: 354px;
+    left: 541px;
+    top: 0px;
+  }
+  
+  table {
+    border-collapse: collapse;
+    border-spacing: 0px;
+    width: 100%;
+    height: 100%;
+  }
+  
+  th {
+    font-weight: 400;
+    height: 41px;
+    text-align: center;
+  }
+  
+  tr {
+    width: 100%;
+    border-bottom: 2px solid rgba(222, 222, 222, 0.1);
+    padding: 0px;
+    text-align: center;
+  }
+  
+  .List-container {
+    background: #FAFAFA;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 23px;
+    letter-spacing: 0em;
+    text-align: left;
+    position: absolute;
+    width: 968px;
+    height: 759px;
+    left: 249px;
+    top: 389px;
+  }
+  
+  /* Header */
+  
+  /* List Row */
+  .lemon-cell {
+    padding-left: 31px;
+    width: 120px;
+    height: 110px;
+  }
+  
+  .lemon-img {
+    padding-left: 2px;
+    padding-right: 6px;
+    padding-top: 8px;
+    padding-bottom: 41px;
+  }
+  
+  .flavor {
+    padding-bottom: 12px;
+    text-align: left;
+  }
+  
+  .size-text {
+    color: #A2A2A2;
+    font-size: 18px;
+    line-height: 21px;
+    padding-bottom: 57px;
+  }
+  
+  .quantity-text {
+    display: inline-block;
+    font-family: 'Poppins';
+    line-height: 30px;
+    margin-top: 13px;
+    padding: 20px;
+  } 
+  
+  .trash {
+    padding-right: 20px;
+  }
+  
+  .trash-button {
+    background-color: #F5F5F5;
+    border: none;
+  } */
+  
+  /* Total Box */
+  .total-box {
+    position: absolute;
+    width: 439px;
+    height: 225px;
+    left: 1232px;
+    top: 553px;
+    font-size: 20px;
+  
+    background: #FAFAFA;
+  }
+  
+  .total {
+    float: left;
+    height: 40px;
+    padding-left: 23px;
+    padding-top: 70px;
+    width: 2em;
+  }
+  
+  .amount {
+    float: right;
+    height: 40px;
+    padding-right: 23px;
+    padding-top: 70px;
+    width: 2em;
+  }
+  
+  .order-button {
+    width: 391px;
+    height: 42px;
+    margin-bottom: 23px;
+    margin-top: 30px;
+  
+    color: white;
+  
+    background: #000000;
+  }
+  
+  button {
+    font-family: inherit;
+    font-size: inherit;
+  }
+  
+  .OrderForm {
+    background-color: inherit;
+    height: 300px;
+    padding-top: 10px;
+    text-align: center;
+  }
+  
+  form {
+     line-height: 40px;
+     padding: 0px 20px; 
+  } 
+  
