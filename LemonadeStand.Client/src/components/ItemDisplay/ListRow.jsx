@@ -17,7 +17,7 @@ const ListRow = ({price, flavor, size, productId }) => {
         </td>
         <td className='flavor'>
             <span>
-                {flavor}
+                {flavor === 'Pink' ? 'Pink Lemonade' : 'Lemonade'}
             </span>
             <span className='size-text'>
                 <br></br>
