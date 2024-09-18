@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { TotalContext } from '../Wrapper.js';
-import {formatter} from '../../utils.js';
-import OrderForm from './OrderForm.js'
+import { OrderContext } from '../Wrapper.jsx';
+import { formatter } from '../../utils.js';
+import OrderForm from './OrderForm.jsx';
 
 const TotalBox = () => {
     const [open, setOpen] = useState(false);
@@ -13,11 +13,11 @@ const TotalBox = () => {
 
     return (<div className='total-box'>
                 <div className='total'>Total</div>
-                    <TotalContext.Consumer>
+                    <OrderContext.Consumer>
                         {state => <div className='amount'>
                             {formatter.format(state.state.total)}
                         </div>}
-                    </TotalContext.Consumer>
+                    </OrderContext.Consumer>
                 <br></br>
                 <button onClick={open ? submitForm : openForm} className='order-button'>{orderText}</button>
                 <OrderForm open={open} setOpen={setOpen} submit={submit}></OrderForm>

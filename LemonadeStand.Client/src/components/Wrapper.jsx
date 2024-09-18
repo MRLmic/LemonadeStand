@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useReducer, createContext } from 'react';
 import ListContainer from './ItemDisplay/ListContainer';
+import TotalBox from './OrderDisplay/TotalBox';
 
 export const OrderContext = createContext();
 
@@ -63,6 +64,7 @@ const Wrapper = () => {
         <OrderContext.Provider value={{ state, dispatch }}>
             <div>
                 <ListContainer products={products}></ListContainer>
+                <TotalBox></TotalBox>
             </div>
         </OrderContext.Provider>
     );
