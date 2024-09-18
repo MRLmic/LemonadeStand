@@ -1,17 +1,11 @@
 import React, {useContext, useEffect, useRef} from 'react';
-import {TotalContext, TotalContextType, OrderActionKind, Submit} from '../Wrapper.js'
+import { OrderContext } from '../../components/Wrapper.jsx';
 
-interface OrderFormProps {
-    open: boolean
-    setOpen: React.Dispatch<React.SetStateAction<boolean>>
-    submit: number
-}
-
-const OrderForm = ({open,setOpen,submit}) => {
-    const phoneNumRef = useRef<HTMLInputElement| null>(null);
-    const emailRef = useRef<HTMLInputElement | null>(null);
-    const nameRef = useRef<HTMLInputElement | null>(null);
-    const {dispatch} = useContext<TotalContextType>(TotalContext);
+export const OrderForm = ({open,setOpen,submit}) => {
+    const phoneNumRef = useRef(null);
+    const emailRef = useRef(null);
+    const nameRef = useRef(null);
+    const {dispatch} = useContext(OrderContext);
 
   useEffect(() => {
     if (submit) {
@@ -19,8 +13,8 @@ const OrderForm = ({open,setOpen,submit}) => {
             alert('An email or phone number is required to place an order.')
             return;
         } else {
-            let customerContact: string | undefined
-            let contactType: string | undefined
+            let customerContact;
+            let contactType;
             if (emailRef.current?.value === '') {
                 customerContact = phoneNumRef.current?.value
                 contactType = 'phone'
@@ -28,7 +22,7 @@ const OrderForm = ({open,setOpen,submit}) => {
                 customerContact = emailRef.current?.value
                 contactType = 'email'
             }
-            dispatch({type: OrderActionKind.SUBMIT, orderName: nameRef.current?.value, customerContact: customerContact, contactType: contactType})
+            dispatch({type: 'SUBMIT', orderName: nameRef.current?.value, customerContact, contactType})
             setOpen(false)
         }
     }
