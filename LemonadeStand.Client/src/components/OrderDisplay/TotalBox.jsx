@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { OrderContext } from '../Wrapper.jsx';
 import { formatter } from '../../utils.js';
 import OrderForm from './OrderForm.jsx';
@@ -6,6 +6,7 @@ import OrderForm from './OrderForm.jsx';
 const TotalBox = () => {
     const [open, setOpen] = useState(false);
     const [submit, setSubmit] = useState(0);
+    const { state } = useContext(OrderContext);
     let orderText = open ? 'Submit' : 'Order Now';
 
     const openForm = () => setOpen(true);
@@ -13,11 +14,9 @@ const TotalBox = () => {
 
     return (<div className='total-box'>
                 <div className='total'>Total</div>
-                    <OrderContext.Consumer>
-                        {state => <div className='amount'>
-                            {formatter.format(state.state.total)}
-                        </div>}
-                    </OrderContext.Consumer>
+                    <div className='amount'>
+                            {formatter.format(state.total)}
+                    </div>
                 <br></br>
                 <button onClick={open ? submitForm : openForm} className='order-button'>{orderText}</button>
                 <OrderForm open={open} setOpen={setOpen} submit={submit}></OrderForm>

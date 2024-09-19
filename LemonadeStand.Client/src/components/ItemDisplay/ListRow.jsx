@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import Lemon from '../../assets/img/lemon.png';
 import Trash from '../../assets/img/trash-icon.svg';
-//ToDo create aliases for assets
 import QuantityComponent from './QuantityComponent.jsx';
 import { OrderContext } from './../Wrapper.jsx';
 import { formatter } from '../../utils.js'
@@ -34,7 +33,7 @@ const ListRow = ({price, flavor, size, productId }) => {
             {formatter.format(price)}
         </td>
         <td className='trash'>
-            <button onClick={() => dispatch({ type: 'RESET', productId })} className='trash-button'>
+            <button onClick={() => dispatch({ type: 'RESET', productId, price })} className='trash-button'>
                 <img src={Trash} alt='trash'></img>
             </button>
         </td>
