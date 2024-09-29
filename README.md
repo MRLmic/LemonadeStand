@@ -22,7 +22,7 @@ In addition to the below specifications, it was also requested that I reproduce 
 _mock-up_
 ![Provided Mockup](mockup.png)
 _final result with data populated_
-<!-- TODO Add image of app with data populated -->
+![My Finished App](final.png)
 
 ## Specs
 Acceptance criteria provided: 
