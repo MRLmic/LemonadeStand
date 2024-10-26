@@ -4,6 +4,7 @@ using LemonadeStand.Models;
 
 namespace LemonadeStand.Controllers
 {
+    [Route("api/[controller]")]
     public class ProductsController : ControllerBase
     {
         private readonly LemonadeContext _context;
