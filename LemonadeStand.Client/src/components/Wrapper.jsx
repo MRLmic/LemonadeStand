@@ -46,7 +46,7 @@ const reducer = (state, action) => {
 };
 
 const postData = (customerInfo, order) => {
-  fetch("api/Orders", {
+  fetch(`${process.env.REACT_APP_API_URL}/api/Orders`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -81,7 +81,7 @@ const Wrapper = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(process.env.REACT_APP_API_URL, {
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/api/Products`, {
           headers: {
             "Content-Type": "application/json",
           },
