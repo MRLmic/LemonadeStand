@@ -20,9 +20,9 @@ export const OrderForm = ({ open, setOpen, submit }) => {
       } else {
         let customerInfo;
         if (phone) {
-          customerInfo = { customerName: name, phone: phone };
+          customerInfo = { name: name, phoneNumber: phone, email: "" };
         } else {
-          customerInfo = { customerName: name, email: email };
+          customerInfo = { name: name, email: email, phoneNumber: "" };
         }
         dispatch({ type: "SUBMIT", customerInfo: customerInfo });
         setOpen(false);

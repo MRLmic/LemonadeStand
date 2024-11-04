@@ -8,17 +8,15 @@ public class Order
     public decimal Total { get; set; }
     [Required]
     public int CustomerId { get; set; }
-    public virtual Customer Customer { get; set; }
-    public required virtual ICollection<OrderItem> OrderItems { get; set; } = new List<OrderItem>();
+    public virtual Customer Customer { get; set; } = null!;
+    [Required]
+    public virtual ICollection<OrderItem> OrderItems { get; set; } = new List<OrderItem>();
 
-    public Order()
+    public Order() {}
+    public Order(Customer customer, ICollection<OrderItem> orderItems, decimal total)
     {
-        //TODO: initialize with Customer as parameter
-        Customer = new Customer
-        {
-            Name = "",
-            PhoneNumber = "",
-            Email = ""
-        };
+        Customer = customer;
+        OrderItems = orderItems;
+        Total = total;        
     }
 }

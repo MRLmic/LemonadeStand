@@ -5,6 +5,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllers();
+builder.Services.AddAutoMapper(typeof(Program));
 
 var config = new ConfigurationBuilder()
     .SetBasePath(Directory.GetCurrentDirectory())
@@ -23,6 +24,7 @@ builder.Services.AddCors(options =>
             var frontendurl = config["Frontend:Url"];
             Console.WriteLine(frontendurl);
             builder.WithOrigins(frontendurl)
+            .WithOrigins("Frontend:Https")
                 .AllowAnyMethod()
                 .AllowAnyHeader();
         });
@@ -45,6 +47,7 @@ app.UseRouting();
 if (app.Environment.IsDevelopment())
 {
     app.UseCors("AllowSpecificOrigins");
+
 }
 
 app.UseAuthorization();

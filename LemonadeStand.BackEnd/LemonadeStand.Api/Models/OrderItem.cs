@@ -10,28 +10,16 @@ public class OrderItem
     [Required]
     public int OrderId { get; set; }
 
-    public virtual Order Order { get; set; }
+    public virtual Order Order { get; set; } = null!;
 
     [Required]
-    public required int ProductId { get; set; }
+    public int ProductId { get; set; }
 
-    public required virtual Product Product { get; set; }
+    public virtual Product Product { get; set; } = null!;
 
-    public OrderItem()
+    public OrderItem(int quantity, int productId)
     {
-        //TODO: initialize with Product/Order as parameter
-        Product = new Product
-        {
-            Flavor = "",
-            Size = "",
-            Price = 0
-        };
-
-        Order = new Order
-        {
-            CustomerId = 0,
-            Total = 0,
-            OrderItems = new List<OrderItem>()
-        };
+        ProductId = productId;
+        Quantity = quantity;
     }
 }

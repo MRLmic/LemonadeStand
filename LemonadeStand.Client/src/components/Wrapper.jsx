@@ -52,7 +52,7 @@ const postData = (customerInfo, order) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      customerInfo: customerInfo,
+      customer: customerInfo,
       order: order,
     }),
   })
