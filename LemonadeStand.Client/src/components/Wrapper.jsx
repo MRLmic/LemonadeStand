@@ -4,7 +4,9 @@ import TotalBox from "./OrderDisplay/TotalBox";
 
 export const OrderContext = createContext();
 
-const initialState = {};
+const initialState = {
+  total: 0
+};
 
 const reducer = (state, action) => {
   switch (action.type) {
