@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { OrderContext } from "../../components/Wrapper.jsx";
 
-export const OrderForm = ({ open, setOpen, submit }) => {
+export const OrderForm = ({ open, setOpen, submit, setSubmit, total }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -19,16 +19,29 @@ export const OrderForm = ({ open, setOpen, submit }) => {
         return;
       } else {
         let customerInfo;
-        if (phone) {
-          customerInfo = { name: name, phoneNumber: phone, email: "" };
+        if (phone && email) {
+          customerInfo = { name: name, phoneNumber: phone, email: email };
+        } else if (phone) {
+          customerInfo = { name: name, email: "", phoneNumber: phone };
         } else {
           customerInfo = { name: name, email: email, phoneNumber: "" };
         }
         dispatch({ type: "SUBMIT", customerInfo: customerInfo });
-        setOpen(false);
       }
     }
-  }, [submit, name, phone, email, dispatch, setOpen]);
+
+    if (!total) {
+      closeForm();
+    }
+  }, [submit, setSubmit, name, phone, email, setOpen, total, dispatch]);
+  
+  const closeForm = () => {
+    setOpen(false);
+    setSubmit(false);
+    setName("");
+    setEmail("");
+    setPhone("");
+  }
 
   if (open) {
     return (

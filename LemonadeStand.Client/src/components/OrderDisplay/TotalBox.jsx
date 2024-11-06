@@ -5,7 +5,7 @@ import OrderForm from "./OrderForm.jsx";
 
 const TotalBox = () => {
   const [open, setOpen] = useState(false);
-  const [submit, setSubmit] = useState(0);
+  const [submit, setSubmit] = useState(false);
   const { state } = useContext(OrderContext);
   let orderText = open ? "Submit" : "Order Now";
 
@@ -18,7 +18,7 @@ const TotalBox = () => {
       );
     }
   };
-  const submitForm = () => setSubmit((submit) => submit + 1);
+  const submitForm = () => setSubmit(true);
 
   return (
     <div className="total-box">
@@ -28,7 +28,7 @@ const TotalBox = () => {
       <button onClick={open ? submitForm : openForm} className="order-button">
         {orderText}
       </button>
-      <OrderForm open={open} setOpen={setOpen} submit={submit}></OrderForm>
+      <OrderForm open={open} setOpen={setOpen} submit={submit} setSubmit={setSubmit} total={state.total}></OrderForm>
     </div>
   );
 };
