@@ -11,6 +11,19 @@
     left: 541px;
     top: 0px;
   }
+
+  .message-modal-content, .message-modal-hidden, .message-modal {
+    position: fixed;
+    top: 40%;
+    left: 37%;
+    width: 439px;
+    height: 225px;
+    font-size: 20px;
+    z-index: 1;
+    border: dashed 5px ghostwhite;
+  
+    background: #FFFFFF;
+  }
   
   table {
     border-collapse: collapse;
@@ -93,14 +106,14 @@
   } 
   
   /* Total Box */
-  .total-box {
+  .total-box{
     position: absolute;
     width: 439px;
     height: 225px;
     left: 1232px;
     top: 553px;
     font-size: 20px;
-  
+    
     background: #FAFAFA;
   }
   

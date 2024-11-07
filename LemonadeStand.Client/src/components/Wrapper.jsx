@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useReducer, createContext } from "react";
+import AlertModal from "./AlertModal";
 import ListContainer from "./ItemDisplay/ListContainer";
 import TotalBox from "./OrderDisplay/TotalBox";
 
@@ -113,6 +114,7 @@ const Wrapper = () => {
       <div>
         <ListContainer products={products}></ListContainer>
         <TotalBox total={total}></TotalBox>
+        <AlertModal open={true}></AlertModal>
       </div>
     </OrderContext.Provider>
   );
