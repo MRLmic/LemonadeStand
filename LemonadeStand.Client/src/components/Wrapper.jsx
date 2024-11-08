@@ -6,7 +6,9 @@ import TotalBox from "./OrderDisplay/TotalBox";
 export const OrderContext = createContext();
 
 const initialState = {
-  total: 0
+  total: 0,
+  message: "",
+  open: false,
 };
 
 const reducer = (state, action) => {
@@ -42,13 +44,17 @@ const reducer = (state, action) => {
       return {
         ...initialState,
       };
+    case "SET_MESSAGE":
+      return { ...state, message: action.payload, open: true };
+    case "CLOSE_MODAL":
+      return { ...state, open: false };
 
     default:
       return state;
   }
 };
 
-const postData = (customerInfo, order) => {
+const postData = (customerInfo, order, dispatch) => {
   fetch(`${process.env.REACT_APP_API_URL}/api/Orders`, {
     method: "POST",
     headers: {
@@ -62,7 +68,9 @@ const postData = (customerInfo, order) => {
     .then((response) => response.json())
     .then((data) => {
       const orderId = data.orderId;
-      alert(`Thank you! Your Order ID is ${orderId}`);
+      dispatch({
+        type: "SET_MESSAGE",
+        payload: `Thank you! Your Order ID is ${orderId}`});
     })
     .catch((err) => console.log(err));
 };
@@ -79,16 +87,19 @@ const mapStateToOrderItems = (state) => {
 const Wrapper = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const [products, setProducts] = useState([]);
-  const [total, setTotal] = useState(0);
+  const { open, message, total } = state;
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`${process.env.REACT_APP_API_URL}/api/Products`, {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
+        const response = await fetch(
+          `${process.env.REACT_APP_API_URL}/api/Products`,
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
         const data = await response.json();
         setProducts(data);
 
@@ -114,7 +125,7 @@ const Wrapper = () => {
       <div>
         <ListContainer products={products}></ListContainer>
         <TotalBox total={total}></TotalBox>
-        <AlertModal open={true}></AlertModal>
+        <AlertModal open={open} message={message}></AlertModal>
       </div>
     </OrderContext.Provider>
   );

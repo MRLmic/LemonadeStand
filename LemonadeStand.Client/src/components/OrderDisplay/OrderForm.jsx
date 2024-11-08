@@ -10,12 +10,10 @@ export const OrderForm = ({ open, setOpen, submit, setSubmit, total }) => {
   useEffect(() => {
     if (submit) {
       if (name === "") {
-        alert("Please enter a name for this order");
+        dispatch({ type: "SET_MESSAGE", payload: "Please enter a name for this order" });
         return;
       } else if (phone === "" && email === "") {
-        alert(
-          "Please enter a phone number or email so we can notify you when your order is ready"
-        );
+        dispatch({ type: "SET_MESSAGE", payload: "Please enter a phone number or email so we can notify you when your order is ready" });
         return;
       } else {
         let customerInfo;
