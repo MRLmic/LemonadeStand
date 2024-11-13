@@ -10,7 +10,7 @@ public class OrderItem
     [Required]
     public int OrderId { get; set; }
 
-    public virtual Order Order { get; set; } = null!;
+    public Order Order { get; set; }
 
     [Required]
     public int ProductId { get; set; }

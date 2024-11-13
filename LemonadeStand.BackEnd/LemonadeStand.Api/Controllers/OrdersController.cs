@@ -43,11 +43,15 @@ namespace LemonadeStand.Controllers
                 Console.WriteLine(e.Message);
             }
 
-
             try
             {
-                var order = _mapper.Map<OrderDto, Order>(orderDto);
+                order = _mapper.Map<OrderDto, Order>(orderDto);
                 order.CustomerId = customerId;
+                foreach (var item in orderDto.Order.OrderItems)
+                {
+                    var orderItem = _mapper.Map<OrderItemDto, OrderItem>(item);
+                    order.OrderItems.Add(orderItem);
+                }
                 _context.Orders.Add(order);
                 await _context.SaveChangesAsync();
                 orderId = order.OrderId;
@@ -57,23 +61,7 @@ namespace LemonadeStand.Controllers
                 Console.WriteLine(e.Message);
             }
 
-            try
-            {
-
-                foreach (var item in orderDto.Order.OrderItems)
-                {
-                    var orderItem = _mapper.Map<OrderItemDto, OrderItem>(item);
-                    orderItem.OrderId = orderId;
-                    _context.OrderItems.Add(orderItem);
-                }
-                await _context.SaveChangesAsync();
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
-
-            return CreatedAtAction(nameof(GetOrder), new { id = orderId }, order);
+            return CreatedAtAction(nameof(GetOrder), new { id = orderId }, new { OrderId = orderId });
         }
 
         // GET: Orders/id
