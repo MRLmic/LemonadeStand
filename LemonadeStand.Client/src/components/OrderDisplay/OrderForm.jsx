@@ -31,7 +31,7 @@ export const OrderForm = ({ open, setOpen, submit, setSubmit, total }) => {
     if (!total) {
       closeForm();
     }
-  }, [submit, setSubmit, name, phone, email, setOpen, total, dispatch]);
+  }, [ submit, setSubmit, name, phone, email, setOpen, total, dispatch ]);
   
   const closeForm = () => {
     setOpen(false);

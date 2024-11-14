@@ -9,6 +9,7 @@ const initialState = {
   total: 0,
   message: "",
   open: false,
+  customerInfo: ""
 };
 
 const reducer = (state, action) => {
@@ -40,39 +41,18 @@ const reducer = (state, action) => {
     case "SUBMIT":
       const orderItems = mapStateToOrderItems(state);
       let order = { total: state.total, orderItems: orderItems };
-      postData(action.customerInfo, order);
+      let customer = action.customerInfo;
       return {
-        ...initialState,
+        ...state, customerInfo: customer, order: order
       };
     case "SET_MESSAGE":
       return { ...state, message: action.payload, open: true };
     case "CLOSE_MODAL":
-      return { ...state, open: false };
+      return { ...state, open: false};
 
     default:
       return state;
   }
-};
-
-const postData = (customerInfo, order, dispatch) => {
-  fetch(`${process.env.REACT_APP_API_URL}/api/Orders`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      customer: customerInfo,
-      order: order,
-    }),
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      const orderId = data.orderId;
-      dispatch({
-        type: "SET_MESSAGE",
-        payload: `Thank you! Your Order ID is ${orderId}`});
-    })
-    .catch((err) => console.log(err));
 };
 
 const mapStateToOrderItems = (state) => {
@@ -118,7 +98,31 @@ const Wrapper = () => {
     };
 
     fetchData();
-  }, []);
+
+    const postData = (customerInfo, order) => {
+      fetch(`${process.env.REACT_APP_API_URL}/api/Orders`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          customer: customerInfo,
+          order: order,
+        }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          dispatch({ type: "SET_MESSAGE", payload: `Order submitted successfully! You're order number is ${data.orderId}` });    
+        })
+        .catch((err) => console.log(err));
+    };
+
+    // does it matter the component doesn't need to be re-rendered? Need to reset customerInfo to "" conditional closemodal 
+    if (state.customerInfo !== "") {
+      postData(state.customerInfo, state.order);
+    }
+
+  }, [state.customerInfo]);
 
   return (
     <OrderContext.Provider value={{ state, dispatch }}>
