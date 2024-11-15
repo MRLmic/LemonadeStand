@@ -1,6 +1,5 @@
 # Lemonade Stand
-
-This project was completed as part of an interview process.
+## Video Demo: 
 
 ## Technologies
 * React.js: v18.2.0
