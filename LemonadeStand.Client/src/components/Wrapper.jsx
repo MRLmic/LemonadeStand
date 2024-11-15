@@ -9,7 +9,9 @@ const initialState = {
   total: 0,
   message: "",
   open: false,
-  customerInfo: ""
+  customerInfo: "",
+  orderSuccess: false,
+  order: ""
 };
 
 const reducer = (state, action) => {
@@ -43,12 +45,18 @@ const reducer = (state, action) => {
       let order = { total: state.total, orderItems: orderItems };
       let customer = action.customerInfo;
       return {
-        ...state, customerInfo: customer, order: order
+        ...state,
+        customerInfo: customer,
+        order: order,
       };
     case "SET_MESSAGE":
-      return { ...state, message: action.payload, open: true };
+      return { ...state, message: action.payload, open: true, orderSuccess: action.orderSuccess };
     case "CLOSE_MODAL":
-      return { ...state, open: false};
+      if (state.orderSuccess) {
+        return { ...state, open: false, customerInfo: "", orderSuccess: false, total: 0 };
+      } else {
+        return { ...state, open: false };
+      }
 
     default:
       return state;
@@ -67,7 +75,7 @@ const mapStateToOrderItems = (state) => {
 const Wrapper = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const [products, setProducts] = useState([]);
-  const { open, message, total } = state;
+  const { open, message, total, customerInfo, order } = state;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -99,30 +107,45 @@ const Wrapper = () => {
 
     fetchData();
 
-    const postData = (customerInfo, order) => {
-      fetch(`${process.env.REACT_APP_API_URL}/api/Orders`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          customer: customerInfo,
-          order: order,
-        }),
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          dispatch({ type: "SET_MESSAGE", payload: `Order submitted successfully! You're order number is ${data.orderId}` });    
-        })
-        .catch((err) => console.log(err));
+    const postData = async (customerInfo, order) => {
+      try {
+        const response = await fetch(
+          `${process.env.REACT_APP_API_URL}/api/Orders`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              customer: customerInfo,
+              order: order,
+            }),
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error(`Error: ${response.status} ${response.statusText}`);
+        }
+
+        const data = await response.json();
+        dispatch({
+          type: "SET_MESSAGE",
+          payload: `Order submitted successfully! Your order number is ${data.orderId}`, orderSuccess: true
+        });
+      } catch (error) {
+        console.error("Submission error:", error);
+        dispatch({
+          type: "SET_MESSAGE",
+          payload: "Failed to submit the order. Please try again.",
+        });
+      }
     };
 
-    // does it matter the component doesn't need to be re-rendered? Need to reset customerInfo to "" conditional closemodal 
-    if (state.customerInfo !== "") {
-      postData(state.customerInfo, state.order);
+    // does it matter the component doesn't need to be re-rendered? Need to reset customerInfo to "" conditional closemodal
+    if (customerInfo !== "" && total !== 0) {
+      postData(customerInfo, order);
     }
-
-  }, [state.customerInfo]);
+  }, [customerInfo, order]);
 
   return (
     <OrderContext.Provider value={{ state, dispatch }}>
