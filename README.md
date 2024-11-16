@@ -11,7 +11,7 @@
 
 ## User Stories
 * As a user, I can add varying quantities of products to my cart.
-* As a user, I can clear my entire order with a single action.
+* As a user, I can clear my order of each product with a single action.
 * As a user, I can see the total cost of my cart updated instantly as I add or adjust items.
 * As a user, I can submit my order, enter my customer data, and receive a confirmation number.
 
@@ -21,7 +21,7 @@ In addition to the below specifications, it was also requested that I reproduce 
 _mock-up_
 ![Provided Mockup](mockup.png)
 _final result with data populated_
-![My Finished App](final.png)
+![My Finished App](Final.jpg)
 
 ## Specs
 Acceptance criteria provided: 
