@@ -1,6 +1,7 @@
 # Lemonade Stand
 ## Video Demo: https://youtu.be/WRTVMdYfYB0
 
+## Description
 ## Technologies
 * React.js: v18.2.0
 * .NET: 7.0
