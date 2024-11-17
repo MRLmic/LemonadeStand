@@ -1,5 +1,5 @@
 # Lemonade Stand
-## Video Demo: 
+## Video Demo: https://youtu.be/WRTVMdYfYB0
 
 ## Technologies
 * React.js: v18.2.0
