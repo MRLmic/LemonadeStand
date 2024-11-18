@@ -4,8 +4,6 @@
 **Date submitted:** 11/16/24  
 **Location:** Boston, MA, USA  
 
-#### **Video Demo:** [Watch it here](https://youtu.be/WRTVMdYfYB0)
-
 ---
 
 ## **Description**
