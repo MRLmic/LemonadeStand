@@ -1,6 +1,5 @@
 # Lemonade Stand
 
-## **Description**
 Simple retail app. Please see below. Full stack application using the below technologies:  
 * React.js: v18.2.0  
 * .NET: 7.0  
