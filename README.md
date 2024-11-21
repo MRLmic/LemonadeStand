@@ -1,11 +1,5 @@
 # Lemonade Stand
 
-**Github/EdX username:** MRLmic  
-**Date submitted:** 11/16/24  
-**Location:** Boston, MA, USA  
-
----
-
 ## **Description**
 Simple retail app. Please see below. Full stack application using the below technologies:  
 * React.js: v18.2.0  
